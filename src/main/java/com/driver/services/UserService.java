@@ -14,23 +14,23 @@ public class UserService {
     UserRepository userRepository3;
 
     public User createUser(String username, String password){
-
-        User user = new User() ;
-        user.setUsername(username);
-        user.setPassword(password);
-        return userRepository3.save(user) ;
+        User user = new User(username, password);
+        userRepository3.save(user);
+        return user;
     }
 
     public void deleteUser(int userId){
-
         userRepository3.deleteById(userId);
     }
 
-    public User updateUser(Integer id, String password){
-
-        User originalUser = userRepository3.findById(id).get() ;
-        originalUser.setPassword(password);
-        originalUser.setUsername(originalUser.getUsername());
-        return userRepository3.save(originalUser) ;
+    public User updateUser(Integer id, String password)  {
+        User user;
+//        if(!userRepository3.findById(id).isPresent()) {
+//           throw new Exception();
+//        }
+        user = userRepository3.findById(id).get();
+        user.setPassword(password);
+        userRepository3.save(user);
+        return user;
     }
 }

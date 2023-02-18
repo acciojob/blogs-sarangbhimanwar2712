@@ -2,8 +2,9 @@ package com.driver.models;
 
 import javax.persistence.*;
 
-public class Image {
-
+@Entity
+@Table(name = "Image")
+public class Image{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
