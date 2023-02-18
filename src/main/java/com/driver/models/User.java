@@ -19,7 +19,6 @@ public class User {
     //Mapping
     //user is parent for blog
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    @JoinColumn
     private List<Blog> blogList;
 
     public User() {
